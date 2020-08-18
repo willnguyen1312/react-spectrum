@@ -83,6 +83,10 @@ storiesOf('Button', module)
     () => render({elementType: 'a', href: '//example.com', target: '_self', variant: 'primary'})
   )
   .add(
+    'element: a, rel: \'noopener noreferrer\'',
+    () => render({elementType: 'a', href: '//example.com', rel: 'noopener noreferrer', variant: 'primary'})
+  )
+  .add(
     'is pending',
     () => {
       let timeout = useRef<ReturnType<typeof setTimeout>>();

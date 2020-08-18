@@ -20,3 +20,4 @@ export * from './styleProps';
 export * from './Slots';
 export * from './useHasChild';
 export * from './useIndeterminate';
+export * from './useResizeObserver';
