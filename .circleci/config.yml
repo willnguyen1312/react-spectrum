@@ -313,15 +313,19 @@ workflows:
           requires:
             - lint
             - test
+            - test-17
             - storybook
       - deploy-storybook-17:
           requires:
+            - lint
+            - test
             - test-17
             - storybook-17
       - deploy-docs:
           requires:
             - lint
             - test
+            - test-17
             - docs
       - deploy-production:
           filters:
@@ -333,7 +337,7 @@ workflows:
           requires:
             - deploy-storybook
             - deploy-storybook-17
-            - deploy-production
+            - deploy-docs
 
   nightly:
     triggers:
