@@ -195,7 +195,7 @@ jobs:
           paths:
             - '*/docs/'
 
-  deploy:
+  deploy-storybook:
     executor: azure-cli/azure-docker
     steps:
       - attach_workspace:
@@ -204,7 +204,31 @@ jobs:
           name: deploy
           command: |
             if [ $AZURE_STORAGE_SAS_TOKEN ]; then
-              az storage blob upload-batch -d reactspectrum -s /tmp/dist --account-name reactspectrum
+              az storage blob upload-batch -d reactspectrum/${CIRCLE_SHA1} -s /tmp/dist/${CIRCLE_SHA1}/storybook --account-name reactspectrum
+            fi
+
+  deploy-storybook-17:
+    executor: azure-cli/azure-docker
+    steps:
+      - attach_workspace:
+          at: /tmp/dist
+      - run:
+          name: deploy
+          command: |
+            if [ $AZURE_STORAGE_SAS_TOKEN ]; then
+              az storage blob upload-batch -d reactspectrum/${CIRCLE_SHA1} -s /tmp/dist/${CIRCLE_SHA1}/storybook-17 --account-name reactspectrum
+            fi
+
+  deploy-docs:
+    executor: azure-cli/azure-docker
+    steps:
+      - attach_workspace:
+          at: /tmp/dist
+      - run:
+          name: deploy
+          command: |
+            if [ $AZURE_STORAGE_SAS_TOKEN ]; then
+              az storage blob upload-batch -d reactspectrum/${CIRCLE_SHA1} -s /tmp/dist/${CIRCLE_SHA1}/docs --account-name reactspectrum
             fi
 
   deploy-production:
@@ -285,13 +309,25 @@ workflows:
               only: main
           requires:
             - install
-      - deploy:
+      - deploy-storybook:
           requires:
             - lint
             - test
             - test-17
             - storybook
+            - docs
+      - deploy-storybook-17:
+          requires:
+            - lint
+            - test
+            - test-17
             - storybook-17
+            - docs
+      - deploy-docs:
+          requires:
+            - lint
+            - test
+            - test-17
             - docs
       - deploy-production:
           filters:
@@ -301,7 +337,9 @@ workflows:
             - docs-production
       - comment:
           requires:
-            - deploy
+            - docs-storybook
+            - docs-storybook-17
+            - docs-production
 
   nightly:
     triggers:
