@@ -28,8 +28,10 @@
       "dom.iterable",
       "es2016.array.include",
       "es2017.object",
+      "esnext.intl",
       "es2017.intl",
-      "esnext.intl"
+      "es2018.intl",
+      "es2020.intl"
     ],
     "skipLibCheck": false
   },

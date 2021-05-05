@@ -63,7 +63,7 @@ export function useDatePicker(props: DatePickerAriaProps, state: DatePickerState
   return {
     comboboxProps: mergeProps(domProps, {
       role: 'combobox',
-      'aria-haspopup': 'dialog',
+      'aria-haspopup': 'dialog' as 'dialog',
       'aria-expanded': state.isOpen,
       'aria-owns': state.isOpen ? dialogId : null,
       'aria-invalid': state.validationState === 'invalid' || null,

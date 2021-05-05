@@ -43,7 +43,16 @@ export function useColorField(
   let {
     isDisabled,
     isReadOnly,
-    isRequired
+    isRequired,
+    id,
+    autoFocus,
+    validationState,
+    label,
+    onBlur,
+    onFocus,
+    onFocusChange,
+    onKeyDown,
+    onKeyUp
   } = props;
 
   let {
@@ -56,7 +65,7 @@ export function useColorField(
     decrementToMin
   } = state;
 
-  let inputId = useId();
+  let inputId = useId(id);
   let {spinButtonProps} = useSpinButton(
     {
       isDisabled,
@@ -94,14 +103,26 @@ export function useColorField(
     state.setInputValue(value);
   };
 
-  let {labelProps, inputProps} = useFormattedTextField(
-    mergeProps(props, {
-      id: inputId,
-      value: inputValue,
-      type: 'text',
-      autoComplete: 'off',
-      onChange
-    }), state, ref);
+  let {labelProps, inputProps} = useFormattedTextField({
+    isDisabled,
+    isReadOnly,
+    isRequired,
+    id: inputId,
+    autoFocus,
+    validationState,
+    label,
+    onBlur,
+    onFocus,
+    onFocusChange,
+    onKeyDown,
+    onKeyUp,
+    value: inputValue,
+    type: 'text',
+    autoComplete: 'off',
+    onChange,
+    'aria-label': props['aria-label'] || null,
+    'aria-labelledby': props['aria-labelledby'] || null
+  }, state, ref);
 
   return {
     labelProps,

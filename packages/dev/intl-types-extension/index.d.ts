@@ -12,25 +12,7 @@
 
 
 declare namespace Intl {
-  interface NumberFormatOptions {
-    currencySign?: string,
-    signDisplay?: 'always' | 'exceptZero' | 'auto' | 'never',
-    unit?: string,
-    unitDisplay?: string
-  }
   interface ResolvedNumberFormatOptions {
-    currencySign?: string,
-    signDisplay?: 'always' | 'exceptZero' | 'auto' | 'never',
-    unit?: string,
-    unitDisplay?: string
-  }
-  // eslint-disable-next-line no-undef
-  type NumberFormatPartTypesExtension = NumberFormatPartTypes | 'unit'
-  interface NumberFormatPartExtension {
-    type: NumberFormatPartTypesExtension,
-    value: string
-  }
-  interface NumberFormat {
-    formatToParts(number?: number): NumberFormatPartExtension[]
+    currencySign?: string
   }
 }

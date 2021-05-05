@@ -37,8 +37,8 @@ export function useTagGroup(props: AriaTagGroupProps): TagGroupAria {
     tagGroupProps: mergeProps(domProps, {
       role: 'grid',
       'aria-atomic': false,
-      'aria-relevant': 'additions',
-      'aria-live': isFocusWithin ? 'polite' : 'off',
+      'aria-relevant': 'additions' as 'additions',
+      'aria-live': isFocusWithin ? 'polite' as 'polite' : 'off' as 'off',
       'aria-disabled': isDisabled,
       ...focusWithinProps
     })
