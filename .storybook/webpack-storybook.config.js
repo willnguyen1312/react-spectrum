@@ -62,13 +62,34 @@ module.exports = () => {
               }
             }
           ],
-          include: path.resolve(__dirname, '../')
+          include: [
+            path.resolve(__dirname, '../')
+          ]
+        },
+        {
+          test: /node_modules\/@spectrum-css\/vars[\\/].*\.css$/,
+          use: [
+            'style-loader',
+            {
+              loader: 'css-loader',
+              options: {
+                modules: true,
+                importLoaders: 1,
+                getLocalIdent: (context, localIdentName, localName) => {
+                  return generateScopedName(localName, context.resourcePath);
+                },
+              }
+            }
+          ],
+          include: [
+            path.resolve(__dirname, '../node_modules/@spectrum-css/')
+          ]
         },
         {
           test: /\.css$/,
           loaders: ['style-loader', 'css-loader'],
           include: path.resolve(__dirname, '../'),
-          exclude: /packages[\\/].*\.css$/
+          exclude: [/packages[\\/].*\.css$/, path.resolve(__dirname, '../node_modules/@spectrum-css/vars')]
         },
         {
           test: /\.(ttf|woff|woff2|svg|gif|cur|eot|png|jpg)(\?[a-f0-9]{32})?$/,

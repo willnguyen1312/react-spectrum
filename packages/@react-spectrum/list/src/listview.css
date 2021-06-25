@@ -18,9 +18,9 @@
   display: grid; /* TODO: define grid areas */
   border-bottom: 1px solid var(--spectrum-tabel-cell-border-color, var(--spectrum-global-color-gray-300));
   box-sizing: border-box;
-  font-size: var(--spectrum-table-cell-text-size, var(--spectrum-alias-font-size-default));
+  font-size: var(--spectrum-table-cell-text-size);
   font-weight: var(--spectrum-table-cell-text-font-weight, var(--spectrum-global-font-weight-regular));
-  line-height: calc(var(--spectrum-table-cell-text-size, var(--spectrum-alias-font-size-default)) * var(--spectrum-table-cell-text-line-height, var(--spectrum-alias-body-text-line-height)) - 1px);
+  line-height: calc(var(--spectrum-table-cell-text-size) * var(--spectrum-table-cell-text-line-height) - 1px);
   padding: var(--spectrum-global-dimension-size-125) var(--spectrum-table-cell-padding-x, var(--spectrum-global-dimension-size-200));
   transition: background-color var(--spectrum-global-animation-duration-100) ease-in-out;
   position: relative;

@@ -1,10 +1,10 @@
-import themeGlobal from '@adobe/spectrum-css-temp/vars/spectrum-global.css';
-import themeLight from '@adobe/spectrum-css-temp/vars/spectrum-light.css';
-import themeLightest from '@adobe/spectrum-css-temp/vars/spectrum-lightest.css';
-import themeDark from '@adobe/spectrum-css-temp/vars/spectrum-dark.css';
-import themeDarkest from '@adobe/spectrum-css-temp/vars/spectrum-darkest.css';
-import scaleMedium from '@adobe/spectrum-css-temp/vars/spectrum-medium.css';
-import scaleLarge from '@adobe/spectrum-css-temp/vars/spectrum-large.css';
+import themeGlobal from '@spectrum-css/vars/dist/spectrum-global.css';
+import themeLight from '@spectrum-css/vars/dist/spectrum-light.css';
+import themeLightest from '@spectrum-css/vars/dist/spectrum-lightest.css';
+import themeDark from '@spectrum-css/vars/dist/spectrum-dark.css';
+import themeDarkest from '@spectrum-css/vars/dist/spectrum-darkest.css';
+import scaleMedium from '@spectrum-css/vars/dist/spectrum-medium.css';
+import scaleLarge from '@spectrum-css/vars/dist/spectrum-large.css';
 
 const THEME = {
   global: themeGlobal,

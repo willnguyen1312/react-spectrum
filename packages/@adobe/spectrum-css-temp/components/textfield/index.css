@@ -29,7 +29,7 @@ governing permissions and limitations under the License.
   --spectrum-textfield-multiline-padding-bottom: var(--spectrum-textfield-padding-bottom);
 
   /* Todo: DNA uses incorrect font family "Adobe Clean" */;
-  --spectrum-textfield-text-font-family-fixed: var(--spectrum-font-family-base);
+  --spectrum-textfield-text-font-family-fixed: var(--spectrum-global-font-family-base);
 }
 
 .spectrum-Textfield {
@@ -199,7 +199,7 @@ governing permissions and limitations under the License.
     Note that the sizes are a bit different when compared with old background icons(more noticable for checkmark)
   */
   position: absolute;
-  padding-inline-end: calc(var(--spectrum-textfield-padding-x, var(--spectrum-global-dimension-size-150)) / 2);
+  padding-inline-end: calc(var(--spectrum-textfield-padding-x) / 2);
   pointer-events: all;
   transition: color var(--spectrum-global-animation-duration-100) ease-in-out;
 
@@ -264,7 +264,7 @@ governing permissions and limitations under the License.
   position: absolute;
   top: calc(calc(var(--spectrum-textfield-icon-frame) / 2) - calc(var(--spectrum-loader-circle-small-width) / 2));
   /* can't use padding right since it breaks the circle loader so add here */
-  inset-inline-end: calc(calc(calc(var(--spectrum-textfield-icon-frame) / 2) - calc(var(--spectrum-icon-alert-medium-width) / 2)) + calc(var(--spectrum-textfield-padding-x, var(--spectrum-global-dimension-size-150)) / 2));
+  inset-inline-end: calc(calc(calc(var(--spectrum-textfield-icon-frame) / 2) - calc(var(--spectrum-icon-alert-medium-width) / 2)) + calc(var(--spectrum-textfield-padding-x) / 2));
 
   .spectrum-Textfield--quiet& {
     padding-inline-end: 0;

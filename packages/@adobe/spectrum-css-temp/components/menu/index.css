@@ -205,5 +205,5 @@ governing permissions and limitations under the License.
   padding-inline-start: var(--spectrum-global-dimension-size-125);
   /* override default browser styling. */
   /* keyboard shortcuts are always ASCII, so use base font */
-  font-family: var(--spectrum-font-family-base);
+  font-family: var(--spectrum-global-font-family-base);
 }

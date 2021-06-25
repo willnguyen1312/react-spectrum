@@ -68,12 +68,12 @@ governing permissions and limitations under the License.
   block-size: var(--spectrum-fieldlabel-asterisk-size);
 }
 .spectrum-UIIcon-CheckmarkMedium {
-  inline-size: var(--spectrum-icon-checkmark-medium-width);
-  block-size: var(--spectrum-icon-checkmark-medium-height);
+  inline-size: var(--spectrum-alias-ui-icon-chevron-size-100);
+  block-size: var(--spectrum-alias-ui-icon-chevron-size-100);
 }
 .spectrum-UIIcon-CheckmarkSmall {
-  inline-size: var(--spectrum-icon-checkmark-small-width);
-  block-size: var(--spectrum-icon-checkmark-small-height);
+  inline-size: var(--spectrum-alias-ui-icon-chevron-size-75);
+  block-size: var(--spectrum-alias-ui-icon-chevron-size-75);
 }
 .spectrum-UIIcon-ChevronDownMedium {
   inline-size: var(--spectrum-icon-chevron-down-medium-width);
@@ -124,8 +124,8 @@ governing permissions and limitations under the License.
   block-size: var(--spectrum-icon-cross-small-height);
 }
 .spectrum-UIIcon-DashSmall {
-  inline-size: var(--spectrum-icon-dash-small-width);
-  block-size: var(--spectrum-icon-dash-small-height);
+  inline-size: var(--spectrum-alias-ui-icon-dash-size-100);
+  block-size: var(--spectrum-alias-ui-icon-dash-size-100);
 }
 .spectrum-UIIcon-DoubleGripper {
   inline-size: var(--spectrum-icon-doublegripper-width);
