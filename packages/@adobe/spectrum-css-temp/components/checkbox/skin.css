@@ -40,7 +40,7 @@ governing permissions and limitations under the License.
 .spectrum-Checkbox.is-indeterminate .spectrum-Checkbox-box,
 .spectrum-Checkbox-input:checked + .spectrum-Checkbox-box {
   &:before {
-    /* this color looks to be too dark, check with spectrum / DNA */
+    /* this color looks to be too dark, check with spectrum / DNA see https://github.com/adobe/spectrum-css/pull/1138#issuecomment-868830064 */
     border-color: var(--spectrum-checkbox-m-emphasized-box-border-color-selected);
   }
 }
