@@ -27,6 +27,14 @@ executors:
       CACHE_VERSION: v1
     working_directory: ~/react-spectrum
 
+  rsp-xxlarge:
+    docker:
+      - image: cimg/node:14.16
+    resource_class: 2xlarge
+    environment:
+      CACHE_VERSION: v1
+    working_directory: ~/react-spectrum
+
 jobs:
   install:
     executor: rsp-large
@@ -271,7 +279,7 @@ jobs:
           command: make publish-nightly
 
   publish-nightly-test:
-    executor: rsp-xlarge
+    executor: rsp-xxlarge
     steps:
       - restore_cache:
           key: react-spectrum-{{ .Environment.CACHE_VERSION }}-{{ .Environment.CIRCLE_SHA1 }}
