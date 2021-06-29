@@ -6,14 +6,14 @@ orbs:
 executors:
   rsp:
     docker:
-      - image: cimg/node:14.16
+      - image: cimg/node:12.22
     environment:
       CACHE_VERSION: v1
     working_directory: ~/react-spectrum
 
   rsp-large:
     docker:
-      - image: cimg/node:14.16
+      - image: cimg/node:12.22
     resource_class: large
     environment:
       CACHE_VERSION: v1
@@ -21,16 +21,8 @@ executors:
 
   rsp-xlarge:
     docker:
-      - image: cimg/node:14.16
+      - image: cimg/node:12.22
     resource_class: xlarge
-    environment:
-      CACHE_VERSION: v1
-    working_directory: ~/react-spectrum
-
-  rsp-xxlarge:
-    docker:
-      - image: cimg/node:14.16
-    resource_class: 2xlarge
     environment:
       CACHE_VERSION: v1
     working_directory: ~/react-spectrum
@@ -279,7 +271,7 @@ jobs:
           command: make publish-nightly
 
   publish-nightly-test:
-    executor: rsp-xxlarge
+    executor: rsp-xlarge
     steps:
       - restore_cache:
           key: react-spectrum-{{ .Environment.CACHE_VERSION }}-{{ .Environment.CIRCLE_SHA1 }}
