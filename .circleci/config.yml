@@ -285,7 +285,7 @@ workflows:
     jobs:
       - install
       - install-17
-      - publish-nightly-test
+      - publish-nightly-test:
           requires:
             - install
       - test-ssr:
