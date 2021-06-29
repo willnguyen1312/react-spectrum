@@ -270,12 +270,24 @@ jobs:
           name: Publish
           command: make publish-nightly
 
+  publish-nightly-test:
+    executor: rsp-xlarge
+    steps:
+      - restore_cache:
+          key: react-spectrum-{{ .Environment.CACHE_VERSION }}-{{ .Environment.CIRCLE_SHA1 }}
+      - run:
+          name: Publish
+          command: make publish-nightly
+
 workflows:
   version: 2
   commit:
     jobs:
       - install
       - install-17
+      - publish-nightly-test
+          requires:
+            - install
       - test-ssr:
           requires:
             - install
