@@ -242,7 +242,12 @@ class DragSession {
       return;
     }
 
-    let dropTarget = this.validDropTargets.find(target => target.element.contains(e.target as HTMLElement));
+
+    let dropTarget = this.validDropTargets.find(target => target.element === e.target);
+    if (!dropTargets) {
+      dropTarget = this.validDropTargets.find(target => target.element === e.target || target.element.contains(e.target as HTMLElement));
+    }
+
     if (!dropTarget) {
       if (this.currentDropTarget) {
         this.currentDropTarget.element.focus();
@@ -428,7 +433,6 @@ class DragSession {
       if (item && typeof this.currentDropTarget.onDropTargetEnter === 'function') {
         this.currentDropTarget.onDropTargetEnter(item?.target);
       }
-
       item?.element.focus();
       this.currentDropItem = item;
     }
@@ -513,7 +517,7 @@ class DragSession {
 
 function findValidDropTargets(options: DragTarget) {
   let types = getTypes(options.items);
-  return [...dropTargets.values()].filter(target => {
+  let targets = [...dropTargets.values()].filter(target => {
     if (target.element.closest('[aria-hidden="true"]')) {
       return false;
     }
@@ -524,4 +528,12 @@ function findValidDropTargets(options: DragTarget) {
 
     return true;
   });
+
+  targets.sort((a ,b ) => {
+    if (a.element.contains(b.element)) {
+      return -1;
+    }
+    return 1;
+  })
+  return targets;
 }
