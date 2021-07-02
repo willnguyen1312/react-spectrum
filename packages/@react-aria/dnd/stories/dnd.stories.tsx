@@ -70,6 +70,11 @@ storiesOf('Drag and Drop', module)
     () => (
       <Flex direction="column" gap="size-200" alignItems="center">
         <Draggable />
+        <input />
+        <Droppable actionId="Parent" />
+        <Droppable actionId="Parent">
+          <Droppable actionId="Child" />
+        </Droppable>
         <Droppable actionId="Parent">
           <Droppable actionId="Child" />
         </Droppable>
