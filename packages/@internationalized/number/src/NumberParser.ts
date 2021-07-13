@@ -96,16 +96,20 @@ function getCachedNumberParser(locale: string, options: Intl.NumberFormatOptions
   return parser;
 }
 
+interface ResolvedNumberOptions extends Intl.ResolvedNumberFormatOptions {
+  currencySign?: string
+}
+
 // The actual number parser implementation. Instances of this class are cached
 // based on the locale, options, and detected numbering system.
 class NumberParserImpl {
   formatter: Intl.NumberFormat;
-  options: Intl.ResolvedNumberFormatOptions;
+  options: ResolvedNumberOptions;
   symbols: Symbols;
 
   constructor(locale: string, options: Intl.NumberFormatOptions = {}) {
     this.formatter = new Intl.NumberFormat(locale, options);
-    this.options = this.formatter.resolvedOptions();
+    this.options = this.formatter.resolvedOptions() as ResolvedNumberOptions;
     this.symbols = getSymbols(this.formatter, this.options, options);
   }
 
@@ -191,7 +195,7 @@ class NumberParserImpl {
 
 const nonLiteralParts = new Set(['decimal', 'fraction', 'integer', 'minusSign', 'plusSign', 'group']);
 
-function getSymbols(formatter: Intl.NumberFormat, intlOptions: Intl.ResolvedNumberFormatOptions, originalOptions: Intl.NumberFormatOptions): Symbols {
+function getSymbols(formatter: Intl.NumberFormat, intlOptions: ResolvedNumberOptions, originalOptions: Intl.NumberFormatOptions): Symbols {
   // Note: some locale's don't add a group symbol until there is a ten thousands place
   let allParts = formatter.formatToParts(-10000.1);
   let posAllParts = formatter.formatToParts(10000.1);

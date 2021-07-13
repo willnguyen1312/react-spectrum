@@ -43,7 +43,7 @@ export function useDrop(options: DropOptions): DropResult {
     x: 0,
     y: 0,
     dragEnterCount: 0,
-    dropEffect: 'none',
+    dropEffect: 'none' as 'none',
     dropActivateTimer: null
   }).current;
 
@@ -63,7 +63,7 @@ export function useDrop(options: DropOptions): DropResult {
       let types = new DragTypes(e.dataTransfer);
       let rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
       let dropOperation = options.getDropOperationForPoint(types, allowedOperations, state.x - rect.x, state.y - rect.y);
-      state.dropEffect = DROP_OPERATION_TO_DROP_EFFECT[dropOperation] || 'none';
+      state.dropEffect = DROP_OPERATION_TO_DROP_EFFECT[dropOperation] || 'none' as 'copy' | 'link' | 'move' | 'none';
     }
 
     e.dataTransfer.dropEffect = state.dropEffect;
