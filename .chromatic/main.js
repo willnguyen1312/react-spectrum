@@ -2,12 +2,14 @@
 const webpackconfig = require('./webpack-chromatic.config.js');
 
 module.exports = {
+  features: {
+    previewCsfV3: true,
+  },
   stories: ['../packages/**/chromatic/**/*.chromatic.@(js|jsx|ts|tsx)'],
   addons: [
     '@storybook/addon-actions',
     '@storybook/addon-links',
-    '@storybook/addon-a11y',
-    '@storybook/addon-knobs'
+    '@storybook/addon-a11y'
   ],
   typescript: {
     check: false,
